@@ -1,4 +1,5 @@
-FROM hypriot/rpi-alpine-scratch
+#FROM hypriot/rpi-alpine-scratch
+FROM nsteinmetz/alpine-arm:3.4
 MAINTAINER Nicolas Steinmetz <public+docker@steinmetz.fr>
 RUN apk update &&\
     apk upgrade &&\
