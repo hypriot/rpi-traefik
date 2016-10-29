@@ -7,7 +7,7 @@ Build an ARM docker container for [Traefik](https://traefik.io/) based on [Alpin
 For eg:
 
 ```
-docker run -d -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml hypriot-rpi-traefik
+docker run -d -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml hypriot/rpi-traefik
 ``` 
 
 ## Blog post
