@@ -1,4 +1,4 @@
-# rpi-traefik
+# rpi-traefik [![Build Status](https://travis-ci.org/hypriot/rpi-traefik.svg?branch=master)](https://travis-ci.org/hypriot/rpi-traefik)
 
 Build an ARM docker container for [Traefik](https://traefik.io/) based on [Alpine](http://alpinelinux.org/)
 
@@ -8,7 +8,7 @@ For eg:
 
 ```
 docker run -d -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml hypriot/rpi-traefik
-``` 
+```
 
 ## Blog post
 
