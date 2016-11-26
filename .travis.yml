@@ -1,0 +1,20 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+- sudo curl --fail -L https://github.com/hypriot/rpi-alpine-qemu/raw/master/qemu-arm-static
+  -o /usr/bin/qemu-arm-static
+- sudo chmod +x /usr/bin/qemu-arm-static
+- sudo curl --fail -L https://github.com/hypriot/rpi-alpine-qemu/raw/master/qemu-arm
+  -o /usr/share/binfmts/qemu-arm
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker build -t hypriot/rpi-traefik .
+- docker run hypriot/rpi-traefik version
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_MAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS";
+    docker tag hypriot/rpi-traefik hypriot/rpi-traefik:v1.1.0;
+    docker push hypriot/rpi-traefik:v1.1.0;
+    docker push hypriot/rpi-traefik;
+    fi
