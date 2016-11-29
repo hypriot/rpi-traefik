@@ -1,0 +1,20 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t hypriot/rpi-traefik:build .
+# test image
+- docker run hypriot/rpi-traefik:build version
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    docker tag hypriot/rpi-traefik:build hypriot/rpi-traefik:v1.1.0
+    docker push hypriot/rpi-traefik:v1.1.0
+    docker tag hypriot/rpi-traefik:build hypriot/rpi-traefik:latest
+    docker push hypriot/rpi-traefik:latest
+  fi
