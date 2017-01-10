@@ -1,4 +1,6 @@
+#FROM armhf/alpine:3.4
 FROM hypriot/rpi-alpine:3.4
+MAINTAINER Nicolas Steinmetz <public+docker@steinmetz.fr>
 RUN apk update &&\
     apk upgrade &&\
     apk add ca-certificates &&\
