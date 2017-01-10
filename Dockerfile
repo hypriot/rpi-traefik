@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine
+FROM hypriot/rpi-alpine:3.4
 RUN apk update &&\
     apk upgrade &&\
     apk add ca-certificates &&\
