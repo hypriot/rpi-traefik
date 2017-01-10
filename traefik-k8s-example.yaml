@@ -15,6 +15,16 @@ spec:
     metadata:
       labels:
         k8s-app: traefik-ingress-controller
+      annotations:
+        scheduler.alpha.kubernetes.io/tolerations: |
+          [
+            {
+              "key": "dedicated",
+              "operator": "Equal",
+              "value": "master",
+              "effect": "NoSchedule"
+            }
+          ]
     spec:
       terminationGracePeriodSeconds: 60
       hostNetwork: true
