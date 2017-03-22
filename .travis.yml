@@ -11,10 +11,11 @@ script:
 - docker run hypriot/rpi-traefik:build version
 # push image
 - >
-  if [ "$TRAVIS_BRANCH" == "master" ]; then
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    docker tag hypriot/rpi-traefik:build hypriot/rpi-traefik:v1.1.0
-    docker push hypriot/rpi-traefik:v1.1.0
+    TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
+    docker tag hypriot/rpi-traefik:build hypriot/rpi-traefik:$TAG
+    docker push hypriot/rpi-traefik:$TAG
     docker tag hypriot/rpi-traefik:build hypriot/rpi-traefik:latest
     docker push hypriot/rpi-traefik:latest
   fi
