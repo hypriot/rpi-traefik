@@ -1,5 +1,5 @@
-FROM hypriot/rpi-alpine:3.4
-ADD https://github.com/containous/traefik/releases/download/v1.1.2/traefik_linux-arm /traefik
+FROM hypriot/rpi-alpine:3.5
+ADD https://github.com/containous/traefik/releases/download/v1.2.0/traefik_linux-arm /traefik
 RUN apk upgrade --no-cache &&\
     apk add --no-cache ca-certificates &&\
     chmod +x /traefik
