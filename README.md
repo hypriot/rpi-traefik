@@ -1,6 +1,6 @@
 # rpi-traefik [![Build Status](https://travis-ci.org/hypriot/rpi-traefik.svg?branch=master)](https://travis-ci.org/hypriot/rpi-traefik)
 
-## Depreciation notice
+## Deprecation notice
 
 As of [Traefik 1.3.8 and 1.4.0-RC2](https://twitter.com/traefikproxy/status/907170048703426560), Traefik provides official docker images for arm32v6 & arm64v8.
 
